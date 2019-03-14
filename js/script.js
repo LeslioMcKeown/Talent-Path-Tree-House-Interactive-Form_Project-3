@@ -29,9 +29,26 @@ paymentOptions = document.getElementById("payment").options,
 paymentOptionsArray = ["placeholder", credit, paypal, bitcoin],
 checkboxes = document.querySelectorAll('input[type="checkbox"]'),
 cvv = document.getElementById("cvv"), ccNum = document.getElementById("cc-num");
-
 selectOption.textContent = "Select A T-Shirt Color";
 selectOption.setAttribute("selected", "selected");
+
+function ValidatingEmail() {
+    var txt1 = document.forms[0]['txtEmailAddress'];
+
+    if (txt1.value.length == 0) {
+        alert(' Please Enter Email Address ... !!! ');
+        txt1.focus();
+        return false;
+    }
+
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (!filter.test(txt1.value)) {
+        alert('Please provide a valid email address');
+        txt1.focus;
+        return false;
+    }
+    return true;
+}
 
 window.onload = function(){
 	nameField.required = true;
